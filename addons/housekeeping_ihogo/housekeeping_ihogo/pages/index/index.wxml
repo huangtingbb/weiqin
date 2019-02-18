@@ -1,0 +1,125 @@
+<view class="container">
+  <view>
+    <swiper autoplay="true" circular="true" duration="{{duration}}" indicatorActiveColor="#41c2fc" indicatorColor="rgba(255,255,255,.7)" indicatorDots="true" interval="{{interval}}">
+      <view wx:for='{{swiperDataList}}' wx:key='id' class='active'>
+        <swiper-item>
+          <image class="slide-image" height="374" mode="aspectFill" src="{{item.img}}" data-url='{{item.url}}' catchtap='go2DetailsWeb'></image>
+        </swiper-item>
+      </view>
+    </swiper>
+
+    <!-- 通知 -->
+    <view class="notice" wx:if='{{notice.title}}'>
+      <view>
+        <image src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/remind.png"></image>
+      </view>
+      <text class="notice-msg" data-url='{{notice.url}}' catchtap='go2DetailsWeb'>{{notice.title}}</text>
+    </view>
+    <view class="userOpe">
+      <view catchtap="go2DetailsWeb" wx:for='{{categoryList}}' wx:key='objectId' data-url='{{item.url}}' class="opeartion active">
+        <image mode="scaleToFill" src="{{item.img}}"></image>
+        <text>{{item.name}}</text>
+      </view>
+      <view class="opeartion active" data-phone='{{phoneNumber}}' catchtap="toDialogue">
+        <image mode="scaleToFill" src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/dianhuatubiao.jpg"></image>
+        <text>电话联系</text>
+      </view>
+
+      <view catchtap="go2Us" class="opeartion active">
+        <image mode="scaleToFill" src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/logoo5141522.jpg"></image>
+        <text>关于我们</text>
+      </view>
+    </view>
+    <view class="session" wx:if='{{hide}}'>
+      <view class="session-title">热门服务</view>
+      <view class="session-cont">
+        <view class="session-list" wx:for="{{hot}}" wx:key='id'>
+          <navigator url="hotser/hotser?id={{item.seid}}">
+            <image class="service" src="{{url}}{{item.logo}}"></image>
+            <text>{{item.sele_name}}</text>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class="session">
+      <view class="session-title session-order-title">金牌服务</view>
+      <view class="session-wrap">
+        <view class="session-item" wx:for="{{hotMan}}" wx:key='id'>
+          <view class='active' catchtap='openManDetails' data-img='{{item.img}}' data-name='{{item.name}}' data-service='{{item.serviceData}}' data-price='{{item.price}}' data-phone='{{item.phone}}' data-map='{{item.map}}' data-introduction='{{item.introduction}}'  data-img='{{item.img}}'>
+            <view class="item-left">
+              <image class="order" src="{{item.img}}"></image>
+              <view>
+                <view class="item-title">{{item.name}}</view>
+                <view class="item-desc">{{item.serviceData}}</view>
+                <view class="item-price">{{item.price}}</view>
+              </view>
+            </view>
+          </view>
+          <view class='rightBtnSSFor active' >
+            <view class="item-right "    catchtap='openManDetails'
+               data-img='{{item.img}}' data-name='{{item.name}}' data-service='{{item.serviceData}}' data-price='{{item.price}}' data-phone='{{item.phone}}'  data-map='{{item.map}}'
+          data-img='{{item.img}}'  data-introduction='{{item.introduction}}'>
+              <image class='active' src='http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/seaaaarch.png' 
+           
+              ></image> 查看</view>
+            <view class="item-right active" catchtap='toDialogue' data-phone='{{item.phone}}'>
+              <image class='active' src='http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/phoaaaaaane.png'></image> 联系</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='allScereenShadows' wx:if='{{showCloseAllPopx}}'>
+  <view class='popBox' style='height:{{ContentTextHeight*0.88}}px'>
+    <view class='popBoxMainView'>
+      <view class='popBoxImage'>
+        <image class="order" src="{{currentMan.img}}"></image>
+      </view>
+
+      <view class='manName'>
+        {{currentMan.name}}
+      </view>
+
+
+      <view class='centerBox'>
+        <view class='cancle' wx:if='{{currentMan.service}}'>
+          服务承诺
+        </view>
+        <view class='moneyAll' wx:if='{{currentMan.service}}'>{{currentMan.service}}</view>
+
+        <view class='cancle' wx:if='{{currentMan.map}}'>
+          服务范围
+        </view>
+        <view class='moneyAll'> {{currentMan.map}}</view> -->
+
+       <view class='cancle' wx:if='{{currentMan.price}}'>
+          费用薪资
+        </view>
+        <view class='moneyAll' wx:if='{{currentMan.price}}'>{{currentMan.price}}</view>
+ 
+        <view class='cancle' wx:if='{{currentMan.introduction}}'>
+          自我介绍
+        </view>
+
+        <view  
+        wx:if='{{currentMan.introduction=="ihogo.net"}}'
+        bindtap='go2DetailsWeb'
+        data-url='https://ihogo.net'
+        class='moneyAll'>公司官网: iHogo.net 点击查看</view>
+
+        <view wx:else class='moneyAll'>{{currentMan.introduction}}</view>
+
+      </view>
+    </view>
+    <view class='btnBottom'>
+
+      <view catchtap='cancelPopChooseTime' class='active cancle'>关闭</view>
+
+      <!--选择时段  -->
+      <view catchtap='toDialogue' data-phone='{{currentMan.phone}}' class='chooseTimeRight active'>电话联系</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+<view class="container">
+	<view class='th'>
+		问题和意见
+	</view>
+	<view class='row'>
+		<textarea bindblur="feedbackContentInput" class='text' maxlength="4000" focus="{{focus_input}}" name="content" placeholder="感谢您的宝贵意见" />
+	</view>
+	<view class='th'>
+		图片(选填,上传问题截图,10张以内)
+	</view>
+	<view class='row'>
+		<image class='chooseImg {{chooseImgBtn}}' src="http://mininote-1251903635.costj.myqcloud.com/add_group_member.png" bindtap='chooseImg'>
+		</image>
+		<view class='chooseImgBox'  wx:for='{{src}}' wx:key='id'>
+			<view class='chooseImgBottom'id='{{item}}' bindtap='deleteImgClick'>
+				<image class='deleteBtn' src="http://mininote-1251903635.costj.myqcloud.com/delete.png">
+				</image>
+			</view>
+			<image class='chooseImg'  src="{{item}}">
+			</image>
+		</view>
+		<view class='clear'>
+		</view>
+	</view>
+	<view class='th'>
+		您的联系方式
+	</view>
+	<view class='title' >
+		<input name="title" type="text" bindblur="contactInput" maxlength='45' placeholder="(选填,用于接收反馈结果)" value="" />
+	</view>
+  <view class='flex f-just-around'>
+	<view class='sendBtn' hover-class="active" bindtap="sendBtnClick">
+		发送
+	</view>     
+  </view>
+</view>

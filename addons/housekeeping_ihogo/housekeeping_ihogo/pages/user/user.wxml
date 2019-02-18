@@ -1,0 +1,67 @@
+<view class="container">
+  <view>
+    <view class="user-header">
+      <view class="user-info">
+        <image class="thumb" wx:if='{{aboutCompany.company_img}}' src="{{aboutCompany.company_img}}"></image>
+        <text class="nickname">{{aboutCompany.company_name}}</text>
+      </view>
+
+
+    </view>
+    <view class="session">
+      <view bindtap="toBargain" class="session-list  active hide">
+        <view>
+          <image class="iconlist" src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/information.png"></image>
+          <text>关于平台</text>
+        </view>
+        <image class="right" src="http://temp-customs-1251903635.coscd.myqcloud.com/right%20jiantou.png"></image>
+      </view>
+      <view bindtap="toBargain2" class="session-list  active session-lat hide">
+        <view>
+          <image class="iconlist" src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/history.png"></image>
+          <text>平台回顾</text>
+        </view>
+        <image class="right" src="http://temp-customs-1251903635.coscd.myqcloud.com/right%20jiantou.png"></image>
+      </view>
+    </view>
+    <view class="session">
+      <button class="concat" openType="contact">
+        <image class="iconlist" src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/Smile.png"></image>
+        <text>联系客服</text>
+        <image class="right" src="http://temp-customs-1251903635.coscd.myqcloud.com/right%20jiantou.png"></image>
+      </button>
+
+      <view bindtap="toDialogue" class="session-list  active ">
+        <view>
+          <image class="iconlist" src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/phone.png"></image>
+          <text>热线电话</text>
+        </view>
+        <image class="right" src="http://temp-customs-1251903635.coscd.myqcloud.com/right%20jiantou.png"></image>
+      </view>
+
+      <view bindtap="go2Map" wx:if='{{mapForLa}}' class="session-list  active noBoderB">
+        <view>
+          <image class="iconlist" src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/map.png"></image>
+          <text>查看位置</text>
+        </view>
+        <image class="right" src="http://temp-customs-1251903635.coscd.myqcloud.com/right%20jiantou.png"></image>
+      </view>
+    </view>
+
+
+    <view class="session">
+    <!-- 反馈按钮 -->
+      <button class="tdN tdNfeedback" hover-class='active' open-type='feedback'>
+        <view class="session-list  active noBoderB">
+          <view>
+            <image class="iconlist" src="http://temp-customs-1251903635.coscd.myqcloud.com/XinShiChuang-Sg/survey.png"></image>
+            <text>意见反馈</text>
+          </view>
+          <image class="right" src="http://temp-customs-1251903635.coscd.myqcloud.com/right%20jiantou.png"></image>
+        </view>
+      </button>
+      <!-- 反馈按钮 -->
+    </view>
+    <view class="foot"></view>
+  </view>
+</view>

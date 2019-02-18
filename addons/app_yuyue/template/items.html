@@ -1,0 +1,151 @@
+{template 'common/header'}
+<style type="text/css">
+    .circle {
+        width:24px;
+        height:24px;
+        line-height:22px;
+        text-align:center;
+        border-radius:50%;
+        border:1px solid red;
+        color:red;
+    }
+</style>
+<div class="main">
+    <div class="col-lg-12">
+        <div class="panel panel-success">
+            <div class="main">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                    <a href="{php echo $this->createWebUrl('fields')}">{if $_GPC[ 'action']==''}字段列表{else}返回字段列表{/if}</a>
+                    </li>
+                    <!-- <li {if $_GPC[ 'action']=='add' }class="active" {/if}>
+                    <a href="{php echo $this->createWebUrl('fields', array('action' => 'add'))}">添加</a>
+                    </li>
+                    <li {if $_GPC[ 'action']=='edit' }class="active" {/if}>
+                    <a href="javascript:void(0);">编辑</a>
+                    </li> -->
+                </ul>
+                </ul>
+            </div>
+            <div class="panel-body">
+                {if $_GPC['action'] == ''}
+
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">字段名称</th>
+                                <th style="width: 15%;text-align: center;">字段类型</th>
+                                <th style="width: 15%;">启用</th>
+                                <th style="width: 15%;">搜索</th>
+                                <th style="width: 15%;">排序</th>
+                                <th style="width: 10%;">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {loop $list $val}
+                            <tr>
+                                <td style="width: 10%;height: 50px;line-height: 50px;">
+                                    {$val['title']}
+                                </td>
+                                <td style="width: 20%;height: 50px;line-height: 50px;text-align: center;">
+                                    {if  $val['type']== 'number'}数字类型{/if}
+                                    {if  $val['type']== 'select'}选择类型{/if}
+                                    {if  $val['type']== 'datetime'}日期时间{/if}
+                                    {if  $val['type']== 'text'}文本类型{/if}
+                                    {if  $val['type']== 'mobile'}手机号{/if}
+                                </td>
+                                <td style="width: 10%;height: 50px;line-height: 50px;">
+                                    {if  $val['is_open']== '1'}启用{/if}
+                                    {if  $val['is_open']== '0'}停用{/if}
+                                </td>
+                                <td style="width: 10%;height: 50px;line-height: 50px;">
+                                    {if  $val['is_search']== '1'}开启{/if}
+                                    {if  $val['is_search']== '0'}关闭{/if}
+                                </td>
+                                <td style="width: 10%;height: 50px;line-height: 50px;">
+                                    {$val['orderby']}
+                                </td>
+                                <td style="width: 10%;height: 50px;line-height: 50px;">
+                                    <a href="{php echo $this->createWebUrl('fields', array('action' => 'edit', 'field_id' => $val['id']))}" class="btn btn-xs btn-warning">编辑</a>
+                                </td>
+                            </tr>
+                            {/loop}
+                        </tbody>
+                    </table>
+                {/if}
+                {if $_GPC['action'] == 'edit'}
+                <form action="{php echo $this->createWebUrl('fields', array('action' => 'update'))}" method="post">
+                    <input type="hidden" name="field_id" value="{$detail['id']}">
+                    <p>字段名称：<input type="text" name="data[title]" value="{$detail['title']}"></p>
+                    {if $detail['default'] == 0}
+                    <p>字段类型：
+                        <select id="field_type" name="data[type]">
+                            <option value='text' {if $detail['type'] == 'text'}selected=selected{/if}>文本</option>
+                            <option value='mobile' {if $detail['type'] == 'mobile'}selected=selected{/if}>手机号</option>
+                            <option value='datetime' {if $detail['type'] == 'datetime'}selected=selected{/if}>日期时间</option>
+                            <option value='number' {if $detail['type'] == 'number'}selected=selected{/if}>数字</option>
+                            <option value='select' {if $detail['type'] == 'select'}selected=selected{/if}>下拉选择</option>
+                        </select>
+                    </p>
+                    {else}
+                    <input type="hidden" value="{$detail['type']}" name="data[type]" >
+                    {/if}
+                    <p>排序：<input type="text" name="data[orderby]" value="{$detail['orderby']}"></p>
+                    <p>开启：
+                        <label><input type="radio" name="data[is_open]" {if $detail['is_open'] == 1}checked=checked{/if}  value="1" >开启</label>
+                        <label style="margin-left:30px;"><input type="radio" name="data[is_open]" {if $detail['is_open'] == 0}checked=checked{/if} value="0" >关闭</label>
+                    </p>
+                    <p>模板消息字段：
+                        <label><input type="radio" name="data[is_temp]" {if $detail['is_temp'] == 1}checked=checked{/if}  value="1" >是</label>
+                        <label style="margin-left:30px;"><input type="radio" name="data[is_temp]" {if $detail['is_temp'] == 0}checked=checked{/if} value="0" >否</label>
+                    </p>
+                    <p>允许搜索：
+                        <label><input type="radio" name="data[is_search]" {if $detail['is_search'] == 1}checked=checked{/if}  value="1" >是</label>
+                        <label style="margin-left:30px;"><input type="radio" name="data[is_search]" {if $detail['is_search'] == 0}checked=checked{/if} value="0" >否</label>
+                    </p>
+                    <div id="select_items" class="form-group {if $detail['type'] == 'select'}show{else}hidden{/if}">
+                        <p class="bg-primary">下拉选择项目列表：</p>
+                        <button class="btn btn-success" id="additems" type="button">+添加项目</button>
+                        {loop $detail['select_items'] $val}
+                            <div>
+                                <br>
+                                名称：<input type="text" class="item" name="select[title][]" value="{$val['title']}">&nbsp;&nbsp;
+                                排序：<input type="text" class="item" name="select[orderby][]" value="{$val['orderby']}">&nbsp;&nbsp;
+                                <label><div class="circle del">x</div></label>
+                            </div>
+                        {/loop}
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="提交" class="btn btn-primary">
+                    </div>
+                </form>
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#additems').click(function(){
+        $('#select_items').append('<div><br>名称：<input type="text" class="item" name="select[title][]">&nbsp;&nbsp;排序：<input type="text" class="item" name="select[orderby][]" value="10">&nbsp;&nbsp;<label><div class="circle del">x</div></label></div>');
+
+        $('.del').click(function(){
+            $(this).parent().parent().remove();
+        });
+    });
+
+    $('.del').click(function(){
+        $(this).parent().parent().remove();
+    });
+
+    $('#field_type').change(function(){
+        if($(this).val() == 'select'){
+            $('#select_items').addClass('show');
+            $('#select_items').removeClass('hidden');
+        }else{
+            $('#select_items').addClass('hidden');
+            $('#select_items').removeClass('show');
+        }
+    });
+   
+</script>
+{template 'common/footer'}

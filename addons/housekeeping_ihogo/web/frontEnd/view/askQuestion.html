@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>生活家政服务后台</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <!-- 引入样式 -->
+  <link href="https://cdn.bootcss.com/element-ui/2.4.0/theme-chalk/index.css" rel="stylesheet">
+
+  <style>
+    body {
+      line-height: 1.8;
+    }
+
+    .navbar {
+      line-height: 1;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .addNewQuestion {
+      display: flex;
+      padding-bottom: 0;
+    }
+
+    .form-group {
+      margin-right: 50px;
+    }
+
+    .el-select {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="sidebar-mini wysihtml5-supported skin-green-light">
+  <div class="wrapper" id="app">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="sliderPage.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">后台</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">生活家政服务后台</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="hidden-xs">管理员</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a href="#" onclick="logginOff()" class="btn btn-default btn-flat">注销</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <!-- <a href="#" data-toggle="control-sidebar">
+                <i class="fa fa-gears"></i>
+              </a> -->
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header">MAIN NAVIGATION</li>
+          <li class="">
+            <a href="sliderPage.html">
+              <i class="fa fa-circle-o"></i>首页轮播图</a>
+          </li>
+          <li class="">
+            <a href="category.html">
+              <i class="fa fa-circle-o"></i>分类管理</a>
+          </li>
+          <li class="">
+            <a href="questionManage.html">
+              <i class="fa fa-circle-o"></i>金牌服务队员管理</a>
+          </li>
+          <li class="">
+            <a href="answerManage.html">
+              <i class="fa fa-circle-o"></i>公司相关设置</a>
+          </li>
+          <li class="active">
+            <a href="askQuestion.html">
+              <i class="fa fa-circle-o"></i>公告通知管理</a>
+          </li>
+          <li class="">
+            <a href="../../../wxcode.zip" download="wxcode.zip">
+              <i class="fa fa-circle-o"></i>小程序端源码下载</a>
+          </li>
+          <li>
+            <a href="database.html" target="_black">
+              <i class="fa fa-circle-o"></i> 获取公众号文章链接说明</a>
+          </li>
+          <!-- <li>
+                <a href="../../util/database/index.php" target="_blank">
+                  <i class="fa fa-circle-o"></i> 管理数据</a>
+              </li> -->
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">公告通知管理</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+          <!-- 新增问题 -->
+          <div class="box box-primary ">
+            <div class="box-header with-border">
+              <h3 class="box-title">公告通知管理</h3>
+            </div>
+            <form role="form" method="POST" action="../../backEnd/public/?s=Upload.go" enctype="multipart/form-data" id="imgUpForm">
+              <div class="box-body addNewQuestion">
+                <div class="form-group " style="width: 15rem;">
+                  <label for="exampleInputEmail1">公告通知内容(留空则自动隐藏公告)</label>
+                  <textarea id="inputName" v-bind:value="slideData[0].title" placeholder="输入公告通知内容" class="form-control"> </textarea>
+                </div>
+
+
+                <div class="form-group " style="width:19rem;">
+                  <label for="exampleInputEmail1">公告通知对应的文章链接<small>(请以https://开头)</small></label>
+                  <a v-bind:href="slideData[0].url" target="_blank">访问公众号文章</a>
+                  <textarea id="telPhoneInput" v-bind:value="slideData[0].url" placeholder="输入公告通知对应的文章链接" class="form-control"></textarea>
+                </div>
+              </div>
+
+              <div class="box-footer">
+                <button onclick="subImg()" type="button" class="btn btn-block btn-success " style="width:199px;">更新公告</button>
+              </div>
+            </form>
+          </div>
+          <!-- 新增问题结束 -->
+          <!-- /.box-body -->
+        </div>
+      </div>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://cdn.bootcss.com/element-ui/2.4.0/index.js"></script>
+    <script src="../dist/js/main.js"></script>
+    <script src="../dist/js/askQuestion.js"></script>
+</body>
+
+</html>

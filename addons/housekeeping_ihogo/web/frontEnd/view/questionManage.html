@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>生活家政服务后台</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <!-- 引入样式 -->
+  <link href="https://cdn.bootcss.com/element-ui/2.4.0/theme-chalk/index.css" rel="stylesheet">
+
+  <style>
+    body {
+      line-height: 1.8;
+    }
+
+    .navbar {
+      line-height: 1;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .addNewQuestion {
+      display: flex;
+    }
+
+    .form-group {
+      margin-right: 50px;
+    }
+
+    .el-select {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="sidebar-mini wysihtml5-supported skin-green-light">
+  <div class="wrapper" id="app">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="sliderPage.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">后台</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">生活家政服务后台</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="hidden-xs">管理员</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a href="#" onclick="logginOff()" class="btn btn-default btn-flat">注销</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <!-- <a href="#" data-toggle="control-sidebar">
+                <i class="fa fa-gears"></i>
+              </a> -->
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header">MAIN NAVIGATION</li>
+          <li class="">
+            <a href="sliderPage.html">
+              <i class="fa fa-circle-o"></i>首页轮播图</a>
+          </li>
+          <li class="">
+            <a href="category.html">
+              <i class="fa fa-circle-o"></i>分类管理</a>
+          </li>
+          <li class="active">
+            <a href="questionManage.html">
+              <i class="fa fa-circle-o"></i>金牌服务队员管理</a>
+          </li>
+          <li class="">
+            <a href="answerManage.html">
+              <i class="fa fa-circle-o"></i>公司相关设置</a>
+          </li>
+          <li class="">
+            <a href="askQuestion.html">
+              <i class="fa fa-circle-o"></i>公司通告管理</a>
+          </li>
+          <li class="">
+            <a href="../../../wxcode.zip" download="wxcode.zip">
+              <i class="fa fa-circle-o"></i>小程序端源码下载</a>
+          </li>
+          <li>
+            <a href="database.html" target="_black">
+              <i class="fa fa-circle-o"></i> 获取公众号文章链接说明</a>
+          </li>
+          <!-- <li>
+                <a href="../../util/database/index.php" target="_blank">
+                  <i class="fa fa-circle-o"></i> 管理数据</a>
+              </li> -->
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">金牌服务队员管理</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+          <!-- 新增问题 -->
+          <div class="box box-primary ">
+            <div class="box-header with-border">
+              <h3 class="box-title">新增-金牌服务队员</h3>
+            </div>
+            <form role="form" method="POST" action="../../backEnd/public/?s=Upload.go" enctype="multipart/form-data" id="imgUpForm">
+              <div class="box-body addNewQuestion">
+                <div class="form-group " style="width: 280px;">
+                  <label for="exampleInputEmail1">姓名(必填)</label>
+                  <input id="inputName" placeholder="输入姓名" class="form-control">
+                </div>
+
+
+                <div class="form-group " style="width: 280px;">
+                  <label for="exampleInputEmail1">联系电话(必填)</label>
+                  <input id="telPhoneInput" placeholder="输入联系电话" class="form-control">
+                </div>
+
+              </div>
+
+              <div class="box-body addNewQuestion">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" style="width: 280px;">上传头像(必填)</label>
+                  <input type="file" id="exampleInputFile" name="file">
+                </div>
+
+                <div class="form-group " style="width: 280px;">
+                  <label for="exampleInputEmail1">费用薪资</label>
+                  <input id="howMuchInput" placeholder="输入费用薪资" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1" style="width: 100px;">权重(权重数字越大越靠前)</label>
+                  <input type="number" id="inputSort" placeholder="输入权重" class="form-control">
+                </div>
+              </div>
+
+              <div class="box-body addNewQuestion">
+                <div class="form-group " style="width: 280px;">
+                  <label for="exampleInputEmail1">服务范围</label>
+                  <textarea id="serverMapInput" placeholder="输入服务范围" class="form-control"></textarea>
+                </div>
+                <div class="form-group " style="width: 280px;">
+                  <label for="exampleInputEmail1">自我介绍</label>
+                  <textarea id="introductionInput" placeholder="输入自我介绍" class="form-control"></textarea>
+                </div>
+
+                <div class="form-group " style="width: 280px;">
+                  <label for="exampleInputEmail1">服务承诺</label>
+                  <textarea id="promiseInput" placeholder="输入服务承诺" class="form-control"> </textarea>
+                </div>
+              </div>
+              <div class="box-footer">
+                <button onclick="subImg()" type="button" class="btn btn-block btn-success " style="width:199px;">新增金牌服务队员</button>
+              </div>
+            </form>
+          </div>
+          <!-- 新增问题结束 -->
+          <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="row">
+              <!-- <div class="col-sm-6">
+                <div class="dataTables_length" id="example1_length">
+                  <label>Show
+                    <select name="example1_length" aria-controls="example1" class="form-control input-sm">
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select> entries</label>
+                </div>
+              </div> -->
+              <div class="col-sm-6">
+                <div id="example1_filter" class="dataTables_filter">
+                  <label>Search:
+                    <input type="search" class="form-control input-sm" placeholder="" aria-controls="example1">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                        style="">权重</th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
+                        style="">姓名</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                        style="">头像</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                        style="">电话</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                        style="">费用薪资</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                        style="">服务范围</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                        style="">自我介绍</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                        style="">服务承诺</th>
+                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
+                        style="width: 70px;">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr role="row" v-bind:class="trclass(index)" v-for="(item, index) in slideData" :key="index">
+                      <td class="sorting_1">{{item.sort}}</td>
+                      <td class="sorting_1">{{item.name}}</td>
+                      <td class="sorting_1">
+                        <img style="width: 80px;height: 80px;" v-bind:src="item.img" alt="">
+                      </td>
+                      <td class="sorting_1">{{item.phone}}</td>
+                      <td class="sorting_1">{{item.price}}</td>
+                      <td class="sorting_1">{{item.map}}</td>
+                      <td class="sorting_1">{{item.introduction}}</td>
+                      <td class="sorting_1">{{item.serviceData}}</td>
+                      <td>
+                        <button type="button" v-on:click="deleteImg(item.id)" class="btn  btn-danger btn-xs">删除</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th rowspan="1" colspan="1">权重</th>
+                      <th rowspan="1" colspan="1">姓名</th>
+                      <th rowspan="1" colspan="1">头像</th>
+                      <th rowspan="1" colspan="1">电话</th>
+                      <th rowspan="1" colspan="1">服务范围</th>
+                      <th rowspan="1" colspan="1">费用薪资</th>
+                      <th rowspan="1" colspan="1">自我介绍</th>
+                      <th rowspan="1" colspan="1">服务承诺</th>
+                      <th rowspan="1" colspan="1">操作</th> 
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <!-- 页数 分页导航 -->
+            <!-- <div class="row">
+              <div class="col-sm-5">
+                <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+              </div>
+              <div class="col-sm-7">
+                <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                  <ul class="pagination">
+                    <li class="paginate_button previous disabled" id="example1_previous">
+                      <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
+                    </li>
+                    <li class="paginate_button active">
+                      <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a>
+                    </li>
+                    <li class="paginate_button next" id="example1_next">
+                      <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://cdn.bootcss.com/element-ui/2.4.0/index.js"></script>
+    <script src="../dist/js/main.js"></script>
+    <script src="../dist/js/questionManage.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>生活家政服务后台</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <meta http-equiv="refresh" content="0; url=https://blog.csdn.net/Qinhaolei/article/details/82078425">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <style>
+    body {
+      line-height: 1.8;
+    }
+
+    .navbar {
+      line-height: 1;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body class="sidebar-mini wysihtml5-supported skin-green-light">
+  <div class="wrapper">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="sliderPage.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">后台</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">生活家政服务后台</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="hidden-xs">管理员</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a href="#" onclick="logginOff()" class="btn btn-default btn-flat">注销</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <!-- <a href="#" data-toggle="control-sidebar">
+                <i class="fa fa-gears"></i>
+              </a> -->
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header">MAIN NAVIGATION</li>
+          <li class="">
+            <a href="sliderPage.html">
+              <i class="fa fa-circle-o"></i>首页轮播图</a>
+          </li>
+
+          <li class="">
+            <a href="category.html">
+              <i class="fa fa-circle-o"></i>服务分类管理</a>
+          </li>
+          <li class="">
+            <a href="questionManage.html">
+              <i class="fa fa-circle-o"></i>金牌服务队员管理</a>
+          </li>
+          <li class="">
+            <a href="answerManage.html">
+              <i class="fa fa-circle-o"></i>公司相关设置</a>
+          </li>
+          <li class="">
+            <a href="askQuestion.html">
+              <i class="fa fa-circle-o"></i>公司通告管理</a>
+          </li>
+
+          <li class="">
+            <a href="../../../wxcode.zip" download="wxcode.zip">
+              <i class="fa fa-circle-o"></i>小程序端源码下载</a>
+          </li>
+
+          <li class="active">
+            <a href="database.html" target="_black">
+              <i class="fa fa-circle-o"></i> 获取公众号文章链接说明</a>
+          </li>
+
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          数据库表说明
+          <small></small>
+        </h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#">
+              <i class="fa fa-dashboard"></i> Home</a>
+          </li>
+          <!-- <li class="active">Dashboard</li> -->
+        </ol>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <!-- Small boxes (Stat box) -->
+
+        <div class="row">
+
+
+
+          <div class="col-md-3">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">分类表 ihogo_wdd_category</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="table-responsive">
+                  <table class="table no-margin">
+                    <thead>
+                      <tr>
+                        <th>字段名</th>
+                        <th>对应功能</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>name</td>
+                        <td>分类名称</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>id</td>
+                        <td>分类唯一标识</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">评论表 ihogo_wdd_comment</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="table-responsive">
+                  <table class="table no-margin">
+                    <thead>
+                      <tr>
+                        <th>字段名</th>
+                        <th>对应功能</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Title</td>
+                        <td>所评论内容的分类</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>content</td>
+                        <td>评论的内容</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>avatar</td>
+                        <td>用户头像</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">公司表 ihogo_wdd_company</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="table-responsive">
+                  <table class="table no-margin">
+                    <thead>
+                      <tr>
+                        <th>字段名</th>
+                        <th>对应功能</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>pinyin</td>
+                        <td>公司名称拼音</td>
+                        <td>用于在小程序中按首字母检索,必须是字母</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>post_list</td>
+                        <td>该公司发布的Post文章</td>
+                        <td>多个用||分隔</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>name</td>
+                        <td>公司名称</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">文章表 ihogo_wdd_post</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="table-responsive">
+                  <table class="table no-margin">
+                    <thead>
+                      <tr>
+                        <th>字段名</th>
+                        <th>对应功能</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Title</td>
+                        <td>文章标题</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>id</td>
+                        <td>post文章唯一标识</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>FeaImage</td>
+                        <td>文章缩略图地址</td>
+                        <td>图片上传到腾讯云/七牛云等云存储后获得的图片外链地址</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>category</td>
+                        <td>文章所属分类</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">问题表 ihogo_wdd_question</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="table-responsive">
+                  <table class="table no-margin">
+                    <thead>
+                      <tr>
+                        <th>字段名</th>
+                        <th>对应功能</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>time</td>
+                        <td>提问时间</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>question</td>
+                        <td>提问内容</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>openid</td>
+                        <td>小程序用户唯一标识</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>name</td>
+                        <td>用户名</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>avatar</td>
+                        <td>用户头像地址</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">轮播图表 ihogo_wdd_slideimg</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="table-responsive">
+                  <table class="table no-margin">
+                    <thead>
+                      <tr>
+                        <th>字段名</th>
+                        <th>对应功能</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>imgurl</td>
+                        <td>轮播图地址</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+
+              
+            </div>
+          </div>
+          <!-- right col -->
+          <div class="col-md-3">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">用户表 ihogo_wdd_user</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="table-responsive">
+                  <table class="table no-margin">
+                    <thead>
+                      <tr>
+                        <th>字段名</th>
+                        <th>对应功能</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>id</td>
+                        <td>小程序用户openid</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>fav_post</td>
+                        <td>用户收藏的问题</td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">
+                            <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+
+              
+            </div>
+          </div>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+
+      </section>
+      <!-- /.content -->
+    </div>
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery 3 -->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../dist/js/adminlte.min.js"></script>
+  <script src="../dist/js/main.js"></script>
+</body>
+
+</html>
