@@ -281,6 +281,13 @@ class App_yuyueModuleSite extends WeModuleSite {
 		}
 		include $this->template('orders');
 	}
+	
+	public function doWebTest(){
+		global $_W,$_GPC;
+		echo '我自定义的菜单';
+		include $this->template('test');
+	}
+
 	//字段管理操作
 	public function doWebFields() {
 		global $_GPC, $_W;
