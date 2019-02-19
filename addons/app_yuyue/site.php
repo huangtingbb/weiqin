@@ -17,6 +17,7 @@ class App_yuyueModuleSite extends WeModuleSite {
 		'select'=>'bwfy_yuyue_select'
 	);
 
+
 	//管理设置
 	public function doWebItems_manager() {
 		global $_GPC, $_W;
@@ -97,8 +98,9 @@ class App_yuyueModuleSite extends WeModuleSite {
 	public function doWebGetUser(){
 		global $_W,$_GPC;
 		echo "<pre>";
-		print_r($this->app_tables);
-		include $this->template('getUser');
+		$userInfo=mc_oauth_account_userinfo($_W['uniacid']);
+		print_r($userInfo);
+		//include $this->template('getUser');
 	}
 	public function doWebSendEmail(){
 		global $_W,$_GPC;
