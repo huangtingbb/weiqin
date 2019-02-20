@@ -95,13 +95,33 @@ class App_yuyueModuleSite extends WeModuleSite {
 		echo 'backend HELO',"<br>";
 		echo "<a href='".$this->createMobileUrl('hello')."'>MobileUrl:hello</a>";
 	}
+	
+	public function doMobileUserInfo(){
+		global $_W,$_GPC;
+		$userInfo=mc_oauth_account_userinfo($_W['uniacid']);//获取用户信息
+		echo "<pre>";
+		print_r($userInfo);
+	}
+
 	public function doWebGetUser(){
 		global $_W,$_GPC;
 		echo "<pre>";
+		echo '123';
+	//	print_r($_W);
 		$userInfo=mc_oauth_account_userinfo($_W['uniacid']);
 		print_r($userInfo);
+	
 		//include $this->template('getUser');
 	}
+	
+	public function doWebToken(){
+		global $_W,$_GPC;
+		$account_api = WeAccount::create();
+		$account_api->clearAccessToken();
+		$token = $account_api->getAccessToken();
+		print_r( $token );
+	}
+
 	public function doWebSendEmail(){
 		global $_W,$_GPC;
 		load()->func('communication');

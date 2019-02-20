@@ -137,7 +137,7 @@ function cloud_build() {
 		message('下列文件或是目录无读写权限，导致无法进行系统更新，请及时修复，如有疑问请提交工单或联系客服: <br />' . implode('; <br />', $error_file_list), '', 'error');
 	}
 	$pars = _cloud_build_params();
-	$pars['method'] = 'application.build3';
+	$pars['method'] = 'application.build2';
 	$dat = cloud_request('http://v2.addons.we7.cc/gateway.php', $pars);
 	$file = IA_ROOT . '/data/application.build';
 	$ret = _cloud_shipping_parse($dat, $file);
